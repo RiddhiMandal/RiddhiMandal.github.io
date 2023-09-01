@@ -111,8 +111,19 @@
 
 }
 
+/*-------------*\
+skills
+\*--------------*/
 
+.skills-columns {
+  display: flex;
+  justify-content: space-between; /* Adjust as needed */
+}
 
+.skills-column {
+  flex: 1; /* Equal width for both columns */
+  padding: 0 10px; /* Adjust spacing between columns */
+}
 
 
 /*-----------------------------------*\
