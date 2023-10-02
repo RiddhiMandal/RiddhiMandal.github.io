@@ -936,17 +936,46 @@
         </header>
         <section class="contact-form">
           <h3 class="h3 form-title">Contact Form</h3>
-          <form action="https://script.google.com/macros/s/AKfycbzRytuET1-Y55jAfo92SOvvAUlP08FMB8dyFbuCL7VIINlIf95uHbn1pfJWoiHKjUoRoQ/exec" class="form" data-form>
+         <form id="feedback-form" class="form" data-form>
             <div class="input-wrapper">
-              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+              <input type="text" name="name" class="form-input" placeholder="Full name" required data-form-input>
               <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
             </div>
-            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+            <textarea name="feedback" class="form-input" placeholder="Your Message" required data-form-input></textarea>
             <button class="form-btn" type="submit" disabled data-form-btn>
               <ion-icon name="paper-plane"></ion-icon>
               <span>Send Message</span>
             </button>
           </form>
+          
+          <div id="success-message" style="display: none; padding-top: 20px; color: white;">
+            Form submitted successfully! Thank you for your feedback.
+          </div>
+          
+          <script>
+            document.getElementById('feedback-form').addEventListener('submit', function (e) {
+              e.preventDefault();
+              var formData = new FormData(this);
+              fetch('Gscript id--------', {
+                method: 'POST',
+                body: JSON.stringify(Object.fromEntries(formData.entries())),
+              })
+              .then(response => response.text())
+              .then(data => {
+                console.log(data); // Response from the script (optional)
+                
+                // Display success message
+                var successMessage = document.getElementById('success-message');
+                successMessage.style.display = 'block';
+                
+                // You can optionally reset the form
+                document.getElementById('feedback-form').reset();
+              })
+              .catch(error => {
+                console.error('Error:', error);
+              });
+            });
+          </script>
         </section>
         
       
