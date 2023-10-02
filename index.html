@@ -956,7 +956,7 @@
             document.getElementById('feedback-form').addEventListener('submit', function (e) {
               e.preventDefault();
               var formData = new FormData(this);
-              fetch('https://script.google.com/macros/s/AKfycbxv2uQncX2ssw_p8LVmS5nYEay5Mt_dujTQQe8O-Y-W0uC5pd0AX_ABcyCm8vUg9gvS4g/exec', {
+              fetch('https://script.google.com/macros/s/AKfycbwD1wCa34gEQu96biGGufSjD4YWwvPC63r9hFVCTNmFgAk0eabtcRJStoes8XU7Iq__Qw/exec', {
                 method: 'POST',
                 body: JSON.stringify(Object.fromEntries(formData.entries())),
               })
