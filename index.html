@@ -956,7 +956,7 @@
             document.getElementById('feedback-form').addEventListener('submit', function (e) {
               e.preventDefault();
               var formData = new FormData(this);
-              fetch('Gscript id--------', {
+              fetch('https://script.google.com/macros/s/AKfycbwfBVIrKMvK4R3KyORROiY50PMPNydR3_C5BJN3_nqcLk_KLCatQK8F8EBtRbg0N8u8/exec', {
                 method: 'POST',
                 body: JSON.stringify(Object.fromEntries(formData.entries())),
               })
