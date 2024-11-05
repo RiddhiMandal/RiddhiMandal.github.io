@@ -8,9 +8,6 @@
  */
 
 
-
-
-
 /*-----------------------------------*\
   #CUSTOM PROPERTY
 \*-----------------------------------*/
@@ -735,6 +732,9 @@ main {
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
   line-height: 1.6;
+}
+.language-title {
+  margin-bottom: 30px;
 }
 
 
