@@ -112,7 +112,21 @@
 }
 
 
+.about-text p {
+  /* Prevent page breaks inside paragraph */
+  page-break-inside: avoid;
+  break-inside: avoid-column; /* For column breaks */
+}
 
+.about-text p a {
+  /* Keep the link and the next element (e.g., text, <span>) together */
+  display: inline; /* Default, but ensuring */
+}
+.about-text p a + * {
+  /* Ensure the element immediately after the link stays with it */
+  page-break-before: avoid;
+  break-before: avoid-column; /* For column breaks */
+}
 
 
 /*-----------------------------------*\
