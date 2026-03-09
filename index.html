@@ -333,7 +333,7 @@
               <span>August 2019 — June 2023</span>
       
               <p class="timeline-text">
-                Bachelor of Technology (Major: Artificial Intelligence)<br>
+                Bachelor of Technology in Artificial Intelligence<br>
                 CGPA: 8.62/10<br>
                 Thesis: Developing an Image Captioning System with a Text-to-Speech Module for Improved Accessibility for the Visually Impaired.
               </p>
@@ -391,13 +391,16 @@
       
           <li class="timeline-item">
             <h4 class="h4 timeline-item-title">Hong Kong Metropolitan University</h4>
-            <span>Dec. 2023 — Present</span>
+            <span>Dec. 2023 — July 2025</span>
             <p class="timeline-text">
               Research Assistant<br>
-              - Conducting upper-body posture analysis, capturing kinematic data during static and dynamic tasks.<br>
-              - Developing algorithms to analyze posture, joint angles, and muscle activation, aiming to identify potential issues.<br>
-              - Designing experiments for analyzing running biomechanics, using MATLAB for data processing and gait analysis.<br>
-              - Presenting findings in research meetings and contributing to publications.
+              - Analyzed 10k+ multi-source time-series records from the PhysioNet dataset using Python (Pandas, NumPy),
+identifying patterns and anomalies to support data-driven biomechanics research decisions.<br>
+              - Developed and validated deep learning models (Transformer, CNN-LSTM) achieving 94%+ prediction accuracy and
+reducing RMSE to < 0.08 cm across multiple gait dimensions through 10-fold cross-validation. <br>
+              - Created structured analysis summaries and technical documentation, supporting transparency, auditability, and
+reproducibility key in regulated environments.<br>
+              
             </p>
           </li>
 
@@ -407,9 +410,12 @@
             <p class="timeline-text">
               Biotechnology Industry Research Assistance Council Junior Research Fellow<br>
               Title: Smart Web-Based Application for Dental Disease Detection using AI<br>
-              - Conducted a literature review on deep learning and computer vision for dental disease detection.<br>
-              - Developed a user-friendly web app for dental diagnostics, incorporating deep transfer learning techniques and GPU acceleration for efficiency.<br>
-              - Worked closely with dental experts to validate the application’s accuracy and reliability.
+              - Annotated and quality-checked 5k+ dental images across 5 disease categories, standardizing labels and improving
+dataset consistency prior to model training.<br>
+              - Trained and optimized CNN-based models (ResNet, YOLOv8), achieving 90%+ classification accuracy and
+improving detection robustness through structured preprocessing and augmentation techniques.<br>
+              - Partnered with engineers and clinicians to refine analytical workflows, contributing to performance validation and a
+filed patent (Application No: 202421006731) for an AI-powered portable diagnostic device. 
             </p>
           </li>
       
@@ -451,8 +457,16 @@
     <ol class="timeline-list">
   
       <li class="timeline-item">
+        <h4 class="h4 timeline-item-title">AWS Cloud Club at Northeastern University Toronto</h4>
+        <span> Jan 2026 — Present</span>
+        <p class="timeline-text">
+          Active member participating in cloud and data analytics learning initiatives, collaborating with peers to develop expertise in AWS technologies and cloud infrastructure.
+        </p>
+      </li>
+
+      <li class="timeline-item">
         <h4 class="h4 timeline-item-title">Microsoft Student Learn Ambassador India Beta Milestone</h4>
-        <span>Jan. 2021 - Present</span>
+        <span>Jan. 2021 - Jan 2023</span>
         <p class="timeline-text">
           Engaged as a Microsoft Student Learn Ambassador, organizing workshops, webinars, and events to promote technological learning. Provided guidance to students on Microsoft technologies and resources.
         </p>
@@ -668,31 +682,52 @@
             </button>
           </form>
           
-          <div id="success-message" style="display: none; padding-top: 20px; color: white;">
-            Form submitted successfully! Thank you for your feedback.
+          <div id="success-message" style="display: none; padding-top: 20px; color: #4CAF50; font-weight: bold;">
+            ✓ Form submitted successfully! Thank you for your feedback.
+          </div>
+          
+          <div id="error-message" style="display: none; padding-top: 20px; color: #f44336; font-weight: bold;">
+            ✗ Error submitting form. Please try again or contact directly at riddhimandal909@gmail.com
           </div>
           
           <script>
             document.getElementById('feedback-form').addEventListener('submit', function (e) {
               e.preventDefault();
               var formData = new FormData(this);
+              
+              // Hide previous messages
+              document.getElementById('success-message').style.display = 'none';
+              document.getElementById('error-message').style.display = 'none';
+              
               fetch('https://script.google.com/macros/s/AKfycbwD1wCa34gEQu96biGGufSjD4YWwvPC63r9hFVCTNmFgAk0eabtcRJStoes8XU7Iq__Qw/exec', {
                 method: 'POST',
-                body: JSON.stringify(Object.fromEntries(formData.entries())),
+                mode: 'no-cors',
+                headers: {
+                  'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(Object.fromEntries(formData.entries()))
               })
-              .then(response => response.text())
-              .then(data => {
-                console.log(data); // Response from the script (optional)
+              .then(response => {
+                console.log('Form submission response:', response);
                 
                 // Display success message
                 var successMessage = document.getElementById('success-message');
                 successMessage.style.display = 'block';
                 
-                // You can optionally reset the form
+                // Reset the form
                 document.getElementById('feedback-form').reset();
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                  successMessage.style.display = 'none';
+                }, 5000);
               })
               .catch(error => {
                 console.error('Error:', error);
+                
+                // Display error message
+                var errorMessage = document.getElementById('error-message');
+                errorMessage.style.display = 'block';
               });
             });
           </script>
